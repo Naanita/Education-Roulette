@@ -20,7 +20,7 @@ Este proyecto es una aplicación web desarrollada en Streamlit que permite simul
 3. **(Opcional) Entrena los modelos si no tienes los archivos `.pkl`:**
 
    ```sh
-   python train_models.py
+   python trainv1.py
    ```
 
 4. **Inicia la aplicación:**
