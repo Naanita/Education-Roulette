@@ -1,11 +1,9 @@
-aiohttp
-asyncio
+streamlit
 pandas
 numpy
-streamlit
-tensorflow
-joblib
 scikit-learn
-xgboost
-pytz
-dill
+joblib
+tensorflow
+PyYAML
+matplotlib
+beautifulsoup4

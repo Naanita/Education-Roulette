@@ -1,52 +1,46 @@
-# Simulador y Predictor de Ruleta
+# Roulette Simulator and Predictor
 
-Este proyecto es una aplicación web desarrollada en Streamlit que permite simular apuestas y predecir resultados en la ruleta utilizando modelos de machine learning previamente entrenados.
+This project is a web application developed in Streamlit that allows you to simulate bets and predict roulette outcomes using pre-trained machine learning models.
 
-## Requisitos
+## Key Features
 
-- Python 3.8 o superior
-- Los archivos de modelos (`model_numbers.pkl`, `model_dozens.pkl`, `model_high_low.pkl`, `scaler.pkl`) generados previamente con `train_models.py`.
+* **Real-time Predictions**: Recommends the most likely numbers to come up next based on historical data.
+* **Multiple Model Support**: Allows choosing between different prediction models, such as **Random Forest** and a **Keras Neural Network**.
+* **Betting Simulation**: Place bets based on the predictions and track the evolution of a simulated balance.
+* **Dynamic Interface**: A user-friendly and responsive interface built with Streamlit for easy interaction.
 
-## Instalación
+## File Structure
 
-1. **Clona el repositorio o descarga los archivos.**
+-   `app.py`: The main Streamlit application.
+-   `train.py`: The script to train and save the machine learning models.
+-   `utils.py`: Contains helper functions for feature creation.
+-   `config.yml`: Configuration file for models, hyperparameters, and file paths.
+-   `results.csv`: Historical data of roulette results used for training.
+-   `sc.py`: An optional utility script for scraping roulette data from a web page.
+-   `trained_models/`: The directory where the trained models and the scaler are stored.
+-   `requirements.txt`: A list of the necessary dependencies for the project to run.
 
-2. **Instala las dependencias:**
+## Installation and Execution
 
-   ```sh
-   pip install -r requirements.txt
-   ```
+1.  **Clone the repository or download the files.**
 
-3. **(Opcional) Entrena los modelos si no tienes los archivos `.pkl`:**
+2.  **Install the dependencies:**
+    ```sh
+    pip install -r requirements.txt
+    ```
 
-   ```sh
-   python trainv1.py
-   ```
+3.  **Train the Models:**
+    Before running the application, you must train the models. This script uses the `config.yml` file to train the models with the data from `results.csv` and saves them in the `trained_models/` directory.
+    ```sh
+    python train.py
+    ```
 
-4. **Inicia la aplicación:**
+4.  **Start the application:**
+    ```sh
+    streamlit run app.py
+    ```
 
-   ```sh
-   streamlit run app.py
-   ```
-
-5. **Uso:**
-   - Ingresa los resultados de la ruleta en la interfaz.
-   - Visualiza las predicciones y el balance simulado.
-
-## Archivos importantes
-
-- `app.py`: Aplicación principal de Streamlit.
-- `train_models.py`: Script para entrenar y guardar los modelos.
-- `results.csv`: Historial de resultados de la ruleta.
-- `sc.py`: (Opcional) Utilidades adicionales.
-
----
-
-## requirements.txt
-
-````txt
-streamlit
-pandas
-numpy
-joblib
-scikit-learn
+5.  **Usage:**
+    -   Select a prediction model from the sidebar.
+    -   Enter the last number that came out on the roulette wheel by clicking the corresponding button.
+    -   The interface will show the predicted numbers, the recommended bet, and the updated balance.
