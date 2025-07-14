@@ -1,0 +1,53 @@
+# config.yml
+# Archivo de configuración para el entrenamiento de modelos de ruleta
+
+# --- Rutas de Archivos ---
+data_path: 'results.csv'
+output_dir: 'trained_models' # Directorio para guardar modelos, gráficos y métricas
+
+# --- Configuración del Modelo ---
+# Define los modelos que quieres entrenar.
+# Tipos soportados: 'random_forest', 'svm', 'keras_nn'
+models_to_train:
+  - random_forest
+  - keras_nn
+
+# --- Hiperparámetros ---
+# Define los parámetros para cada tipo de modelo.
+hyperparameters:
+  random_forest:
+    n_estimators: 150
+    max_depth: 20
+    min_samples_leaf: 5
+    class_weight: 'balanced' # Útil para clases desbalanceadas
+    random_state: 42
+    n_jobs: -1
+
+  svm:
+    C: 1.0
+    kernel: 'rbf'
+    gamma: 'scale'
+    probability: True # Necesario para predict_proba
+    random_state: 42
+
+  keras_nn:
+    epochs: 50
+    batch_size: 32
+    learning_rate: 0.001
+    validation_split: 0.2
+    # Arquitectura de la red
+    layers:
+      - type: 'Dense'
+        units: 128
+        activation: 'relu'
+      - type: 'Dropout'
+        rate: 0.5
+      - type: 'Dense'
+        units: 64
+        activation: 'relu'
+      - type: 'Dropout'
+        rate: 0.3
+
+# --- Configuración de Características ---
+sequence_length: 10 # Longitud de la secuencia para características rodantes
+future_steps: 1 # Cuántos giros hacia el futuro se quiere predecir
