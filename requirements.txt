@@ -7,3 +7,6 @@ tensorflow
 PyYAML
 matplotlib
 beautifulsoup4
+selenium
+seaborn
+scikeras[tensorflow]
